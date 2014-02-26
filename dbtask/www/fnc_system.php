@@ -1,0 +1,1 @@
+<?php			function select($text,$var){		$sel=' selected="selected" ';		if (strstr($text, $var)){			$pos = strpos($text, $var);			$start = substr($text, 0, $pos);			$end = substr($text, $pos, 1000000000);			$text = $start.$sel.$end;			return $text;		}	}		function unix_date($d){		return strtotime($d);	}?>
