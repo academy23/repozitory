@@ -1,5 +1,5 @@
 <?php
-	include 'mysql.php';
+	include("../config/mysql.php");
 	
 	$content = '';
 	$title = 'University';
@@ -14,13 +14,15 @@
 	include 'fnc_lector.php';
 	include 'fnc_faculty.php';
 	include 'fnc_subject.php';
+	include 'search.php';
 	
 				
 		
 		if(isset($_GET['action'])){
 			switch ($_GET['action']){
 				//функції доступні всім працівникам 
-				
+				case 'search': search(); break;
+				case 'searchDo': searchDo(); break;
 				//case 'list_orders': list_orders(); break;//+
 				//case 'list_form_control': list_form_control(); break;//+
 				case 'listCountries': listCountries(); break;//+

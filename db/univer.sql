@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Фев 22 2014 г., 14:10
+-- Время создания: Мар 01 2014 г., 18:49
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.2.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `house` text NOT NULL,
   `zip_code` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `addresses`
@@ -44,7 +44,11 @@ INSERT INTO `addresses` (`id`, `country_id`, `city`, `street`, `house`, `zip_cod
 (1, 1, 'Чернівці', 'Головна', '21', '58552'),
 (2, 1, 'Чернівці', 'Головна', '21', '58552'),
 (4, 1, 'Київ', 'Богомольца', '12', '1'),
-(5, 1, 'Москва', 'Сімовича', '12', '58552');
+(5, 1, 'Москва', 'Сімовича', '12', '58552'),
+(6, 1, 'Відень', 'Казанови', '34', '009944'),
+(7, 1, 'Чернівці', 'Богомольца', '12', '009944'),
+(8, 3, 'Чернівці', 'Богомольца', '34', '60200'),
+(9, 0, 'Чернівці', 'Казанови', '12', '60200');
 
 -- --------------------------------------------------------
 
@@ -56,14 +60,15 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `country` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `countries`
 --
 
 INSERT INTO `countries` (`id`, `country`) VALUES
-(1, 'Україна');
+(1, 'Україна'),
+(3, 'Франція');
 
 -- --------------------------------------------------------
 
@@ -78,17 +83,20 @@ CREATE TABLE IF NOT EXISTS `faculties` (
   `year_foundation` int(11) NOT NULL,
   `id_decan` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `faculties`
 --
 
 INSERT INTO `faculties` (`id`, `title_faculty`, `id_address`, `year_foundation`, `id_decan`) VALUES
-(1, 'Факультет математики та інформатики', 1, 1852, 1),
+(1, 'Факультет математики та інформатики', 1, 1852, 7),
 (2, 'Факультет історії та політології', 2, 1234, 1),
-(4, 'факультет космосу', 4, 2344, 1),
-(5, 'Біології', 5, 1234, 1);
+(4, 'факультет космосу', 4, 2344, 8),
+(5, 'Біології', 5, 1234, 1),
+(6, 'Факультет кераміки', 6, 1952, 0),
+(8, '111112', 8, 1234, 0),
+(9, 'Факльтет історії', 9, 1234, 0);
 
 -- --------------------------------------------------------
 
@@ -100,22 +108,20 @@ CREATE TABLE IF NOT EXISTS `lectors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `surname` text NOT NULL,
   `firstname` text NOT NULL,
-  `date_of_birth` int(11) NOT NULL,
+  `date_of_birth` int(20) NOT NULL,
   `degree` text NOT NULL,
   `post` text NOT NULL,
   `id_faculty_work` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `lectors`
 --
 
 INSERT INTO `lectors` (`id`, `surname`, `firstname`, `date_of_birth`, `degree`, `post`, `id_faculty_work`) VALUES
-(2, 'Скутар', 'Ігор', 1332323, 'Кандидат наук', 'Асистент', 5),
-(3, 'Ткач', 'Андрій', 23031992, 'Кандидат наук', 'Асистент', 4),
-(4, 'Ватаманюк', 'Олександр', 12121, 'Кандидат наук', 'Викладач', 4),
-(5, 'Ткач', 'Євген', 2232, 'Кандидат наук', 'Професор', 2);
+(7, 'Ткач', 'Андрій', 701301600, 'Доктор наук', 'Асистент', 1),
+(8, 'Ткач', 'Євген', 1058043600, 'Кандидат наук', 'Асистент', 4);
 
 -- --------------------------------------------------------
 
@@ -131,17 +137,16 @@ CREATE TABLE IF NOT EXISTS `subjects` (
   `form_control` int(11) NOT NULL,
   `id_lector` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Дамп данных таблицы `subjects`
 --
 
 INSERT INTO `subjects` (`id`, `title_subject`, `id_faculty`, `number_of_semestr`, `form_control`, `id_lector`) VALUES
-(1, 'Алгебра', 1, 2, 1, 2),
-(5, 'Географія', 1, 5, 1, 3),
-(6, 'Укр.мова', 1, 6, 2, 2),
-(7, 'Геометрія', 1, 5, 2, 3);
+(5, 'Географія', 6, 5, 1, 7),
+(10, 'Фізика', 6, 1, 2, 8),
+(11, 'Англійська', 6, 11, 1, 8);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

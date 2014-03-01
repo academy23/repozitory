@@ -38,12 +38,6 @@ $main_tpl =<<<TPL
                             <a class="brand" href="/"><i class="icon-signal icon-white"></i> Університет</a>
 							<ul class="nav user_menu pull-right">
                                 <li class="divider-vertical hidden-phone hidden-tablet"></li>
-								<li class="dropdown">
-									<form method="get" action="/?action=list_orders" style="margin:5px 0 0;">
-										<input autocomplete="off" name="query" class="search_query input-medium" size="16" type="text" placeholder="Пошук..." />
-										<input type="hidden" name="filter" value="search"/>
-									</form>
-								</li>
 								<li class="divider-vertical hidden-phone hidden-tablet"></li>
                             </ul>
 							
@@ -65,6 +59,10 @@ $main_tpl =<<<TPL
 										<li class="dropdown">
 											<a data-toggle="dropdown" class="dropdown-toggle" href="/?action=listCountries">Країни</a>
 										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="/?action=search">Пошук</a>
+										</li>
+										
 										
 									</ul>
 								</div>
