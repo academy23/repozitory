@@ -1,218 +1,207 @@
+
 <?php
-	include_once("../models/db_class.php");
-	include_once("../models/interface.php");
-	
-	$content = '';
-	$title = 'University';
-	$h1 = '';
-	$mesg = '';
-	$chat = '';
-	$admin_menu = '';
-	$user_name = '';
-	
-	//include 'fnc_system.php';
-	
-	//include 'fnc_lector.php';
-	//include 'fnc_faculty.php';
-	//include 'fnc_subject.php';
-	//include 'search.php';
-	include("../models/country_class.php");
-	include("../models/address_class.php");
-	include("../models/lector_class.php");
-	include("../models/faculty_class.php");
-	include("../models/subject_class.php");
-	include("../models/support_class.php");
-	include_once("../models/db_class.php");
-	include_once("../models/interface.php");
-	
-	
-				
-		
-		if(isset($_GET['action'])){
+if(isset($_GET['action'])){
 			switch ($_GET['action']){
+				//Крани
 				case 'listCountries':{
+					include ("models/country_class.php");
 					$country = new Country();
 					$country->listCountries($order); 
 					break;
 				}
 				
-				case 'addCountry':{ 
-					$obj = new Country();
-					$obj->addCountry();
+				case 'addCountry':{
+					include ("views/country.php");
 					break;
 				}
 				
 				case 'addCountryDo':{ 
+					include ("models/country_class.php");
 					$obj = new Country();
 					$obj->addCountryDo();
-					header('Location: /?action=listCountries', true, 303);
+					echo ("<script>location.href='/?action=listCountries'</script>");
 					break;
 				}
 				
 				case 'deleteCountry':{
+					include ("models/country_class.php");
 					$id = $_GET['id'];
 					$obj = new Country();
 					$obj->deleteById($id);
-					header('Location: /?action=listCountries', true, 303);
+					echo ("<script>location.href='/?action=listCountries'</script>");
 					break;
 				}
 				
 				case 'addLector':{ 
-					$obj = new Lector();
-					$obj->addLector();
+					include ("views/lector.php");
+					addLector();
 					break;
 				}
 				
 				case 'addLectorDo':{ 
+					include ("models/lector_class.php");
 					$obj = new Lector();
 					$obj->addLectorDo();
-					header('Location: /?action=listLectors', true, 303);
+					echo ("<script>location.href='/?action=listLectors'</script>");
 					break;
 				}
 				
-				case 'editLector':{ 
-					$obj = new Lector();
-					$obj->editLector();
+				case 'editLector':{
+					include ("views/lector.php");
+					editLector();
 					break;
 				}//+
 					
 				case 'editLectorDo':{
+					include ("models/lector_class.php");
 					$obj = new Lector();
 					$obj->editLectorDo();
-					header('Location: /?action=listLectors', true, 303);
+					echo ("<script>location.href='/?action=listLectors'</script>");
 					break;
 				}					
 					
 				
 				case 'listLectors':{
+					include ("models/lector_class.php");
 					$lector = new Lector();
 					$lector->listLectors($order);
 					break;
 				}
 				
 				case 'deleteLector':{
+					include ("models/lector_class.php");
 					$id = $_GET['id'];
 					$obj = new Lector();
 					$obj->deleteById($id);
-					header('Location: /?action=listLectors', true, 303);
+					echo ("<script>location.href='/?action=listLectors'</script>");
 					break;
 				}
 				
 				case 'listFaculties':{
+					include ("models/faculty_class.php");
 					$faculty = new Faculty();
 					$faculty->listFaculties($order); 
 					break;
 				}//+
 				
 				case 'addFaculty':{
-					$faculty = new Faculty();
-					$faculty->addFaculty();
+					include ("views/faculty.php");
+					addFaculty();
 					break;
 				}
 				
 				case 'addFacultyDo':{
+					include ("models/faculty_class.php");
 					$obj = new Faculty();
 					$obj->addFacultyDo();
-					header('Location: /?action=listFaculties', true, 303);
+					echo ("<script>location.href='/?action=listFaculties'</script>");
 					break;
 				}
 				
 				case 'editFaculty':{
-					$faculty = new Faculty();
-					$faculty->editFaculty();
+					include ("views/faculty.php");
+					editFaculty();
 					break;
 				}
 				
 				case 'editFacultyDo':{
+					include ("models/faculty_class.php");
 					$obj = new Faculty();
 					$obj->editFacultyDo();
-					header('Location: /?action=listFaculties', true, 303);
+					echo ("<script>location.href='/?action=listFaculties'</script>");
 					break;
 				}
 				
 				
 				case 'addSubject':{ 
-					$obj = new Subject();
-					$obj->addSubject();
+					include ("views/subject.php");
+					addSubject();
 					break;
 				}
 				
 				case 'addSubjectDo':{ 
+					include ("models/subject_class.php");
 					$obj = new Subject();
 					$obj->addSubjectDo();
-					header('Location: /?action=listSubjects', true, 303);
+					echo ("<script>location.href='/?action=listSubjects'</script>");
 					break;
 				}
 				
-				case 'editSubject':{ 
-					$obj = new Subject();
-					$obj->editSubject();
+				case 'editSubject':{
+					include ("views/subject.php");
+					editSubject();
 					break;
 				}//+
 					
 				case 'editSubjectDo':{
+					include ("models/subject_class.php");
 					$obj = new Subject();
 					$obj->editSubjectDo();
-					header('Location: /?action=listSubjects', true, 303);
+					echo ("<script>location.href='/?action=listSubjects'</script>");
 					break;
 				}					
 					
 				
 				case 'listSubjects':{
+					include ("models/subject_class.php");
 					$lector = new Subject();
 					$lector->listSubjects($order);
 					break;
 				}
 				
 				case 'deleteSubject':{
+					include ("models/subject_class.php");
 					$id = $_GET['id'];
 					$obj = new Subject();
 					$obj->deleteById($id);
-					header('Location: /?action=listSubjects', true, 303);
+					echo ("<script>location.href='/?action=listSubjects'</script>");
 					break;
 				}
 				
 				case 'search':{
+					include ("views/faculty.php");
 					$obj = new Faculty();
 					$obj->search();
 					break;
 				}
 				
 				case 'searchDo':{
+					include ("models/faculty_class.php");
 					$obj = new Faculty();
 					$obj->searchDo();
 					break;
 				}
 				
 				case 'subjectOfLector':{
+					include ("models/lector_class.php");
 					$lector = new Lector;
 					$lector->subjectOfLector();
 					break;
 				}
 				
 				case 'subjectOfFaculty':{
+					include ("models/faculty_class.php");
 					$faculty = new Faculty;
 					$faculty->subjectOfFaculty();
 					break;
 				}
 				
 				case 'lectorOfFaculty':{
+					include ("models/faculty_class.php");
 					$faculty = new Faculty;
 					$faculty->lectorOfFaculty();
 					break;
 				}
 				
 				default: 
+					include ("models/country_class.php");
 					$country = new Country();
 					$country->listCountries($order); 
 					break; 
 			}
 		}else{
+			include ("models/country_class.php");
 			$country = new Country();
 			$country->listCountries($order); 
 		}
-		
-		
-		include 'tpl.php'; echo $main_tpl;//вивід шаблона
-	
 ?>
