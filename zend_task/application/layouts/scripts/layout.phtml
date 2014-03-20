@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title><?php echo $this->escape($this->title); ?></title>
+	<?php echo $this->headLink()->appendStylesheet('/css/style.css');?>
+    <?php echo $this->headLink()->appendStylesheet('/css/bootstrap.min.css');?>
+    <?php echo $this->headLink()->appendStylesheet('/css/blue.css');?>
+</head>
+    
+                <div class="navbar navbar-fixed-top">
+                    <div class="navbar-inner">
+                        <div class="container-fluid">
+                            <h3 class="brand">Університет</h3>
+							<a data-target=".nav-collapse" data-toggle="collapse" class="btn_menu">
+								<span class="icon-align-justify icon-white"></span>
+							</a>
+                            <nav>
+								<div class="nav-collapse">
+									<ul class="nav">
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo $this->url(
+											array('controller'=>'subject'),
+											'default',
+											true) ?>">Subject</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo $this->url(
+											array('controller'=>'faculty'),
+											'default',
+											true) ?>">Faculty</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo $this->url(
+											array('controller'=>'lector'),
+											'default',
+											true) ?>">Lector</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo $this->url(
+											array('controller'=>'country'),
+											'default',
+											true) ?>">Country</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo $this->url(
+											array('controller'=>'address'),
+											'default',
+											true) ?>">Address</a>
+										</li>
+										<li class="dropdown">
+											<a data-toggle="dropdown" class="dropdown-toggle" href="#">Пошук</a>
+										</li>
+										
+										
+									</ul>
+								</div>
+							</nav>
+                        </div>
+                    </div>
+                </div>
+			<body>
+        	 <div id="contentwrapper">
+                <div class="main_content">
+                    <div class="row-fluid">
+						<div class="span12">
+							<h1><?php echo $this->escape($this->title); ?></h1>
+							<article>
+			<div>
+				<?php 
+				echo $this->layout()->content;
+				?>
+			</div>
+		</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.cookie.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.dataTables.js"></script>
+		<script src="/js/datepicker/bootstrap-datepicker.js"></script>
+    </body>
+</html>
